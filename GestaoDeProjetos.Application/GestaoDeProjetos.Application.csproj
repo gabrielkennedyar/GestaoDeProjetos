@@ -11,4 +11,12 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoDeProjetos.Domain\GestaoDeProjetos.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
