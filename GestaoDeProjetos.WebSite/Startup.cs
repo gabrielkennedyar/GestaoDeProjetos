@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GestaoDeProjetos.Application.AutoMapper;
 using GestaoDeProjetos.Infra.CrossCutting.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +37,9 @@ namespace GestaoDeProjetos.WebSite
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Configura o mapeamento model viewModel
+            var mapper = AutoMapperConfig.RegisterMappings();
+            BootStrapper.RegisterMappings(services, mapper);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

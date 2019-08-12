@@ -1,4 +1,5 @@
-﻿using GestaoDeProjetos.Application.AppServices;
+﻿using AutoMapper;
+using GestaoDeProjetos.Application.AppServices;
 using GestaoDeProjetos.Application.IAppServices;
 using GestaoDeProjetos.Domain.Interfaces.IRepositories;
 using GestaoDeProjetos.Domain.Interfaces.IServices;
@@ -47,6 +48,10 @@ namespace GestaoDeProjetos.Infra.CrossCutting.IoC
             services.AddScoped<ITarefaRepository, TarefaRepository>();
 
             services.AddScoped<IUnityOfWork, UnityOfWork>();
+        }
+        public static void RegisterMappings(IServiceCollection services, IMapper mapper)
+        {
+            services.AddSingleton(mapper);
         }
     }
 }
