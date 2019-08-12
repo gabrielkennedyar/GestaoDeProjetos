@@ -7,7 +7,7 @@ namespace GestaoDeProjetos.Domain.Interfaces.IRepositories
 {
     public interface IRepositoryRead<TEntity> : IDisposable where TEntity : EntityBase
     {
-        TEntity ObterPorId(string id);
+        TEntity ObterPorId(Guid id);
         IEnumerable<TEntity> ObterTodos();
         IEnumerable<TEntity> ObterTodosSemTracking();
         IEnumerable<TEntity> ObterTodosPaginado(int s, int t);

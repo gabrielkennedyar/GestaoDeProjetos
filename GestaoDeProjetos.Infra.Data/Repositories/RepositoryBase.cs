@@ -53,7 +53,7 @@ namespace GestaoDeProjetos.Infra.Data.Repositories
             return DbSet.AsNoTracking().ToList();
         }
 
-        public virtual TEntity ObterPorId(string id)
+        public virtual TEntity ObterPorId(Guid id)
         {
             return DbSet.Find(id);
         }
