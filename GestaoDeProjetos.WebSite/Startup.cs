@@ -27,6 +27,7 @@ namespace GestaoDeProjetos.WebSite
         {
             // Registra o contexto do banco
             BootStrapper.RegisterDbContext(Configuration, services);
+            BootStrapper.Register(services);
 
             services.Configure<CookiePolicyOptions>(options =>
             {

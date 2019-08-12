@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AppServices\" />
     <Folder Include="AutoMapper\" />
-    <Folder Include="IAppServices\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
