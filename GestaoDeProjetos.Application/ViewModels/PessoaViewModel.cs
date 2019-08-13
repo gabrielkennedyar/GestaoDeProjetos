@@ -22,6 +22,9 @@ namespace GestaoDeProjetos.Application.ViewModels
         [Required(ErrorMessage = "Informe o nome da pessoa")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Informe a função da pessoa")]
+        public string Funcao { get; set; }
+
         [Required(ErrorMessage = "Informe o setor da pessoa")]
         public string Setor { get; set; }
 

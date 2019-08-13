@@ -52,7 +52,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Nome,Setor,Contato,Empresa,Id")] PessoaViewModel pessoa)
+        public IActionResult Create([Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] PessoaViewModel pessoa)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Guid id, [Bind("Nome,Setor,Contato,Empresa,Id")] PessoaViewModel pessoa)
+        public IActionResult Edit(Guid id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] PessoaViewModel pessoa)
         {
             if (id != pessoa.Id)
             {
@@ -93,7 +93,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
 
             if (ModelState.IsValid)
             {
-                _pessoaAppService.Editar(id);
+                _pessoaAppService.Editar(pessoa);
 
                 return RedirectToAction(nameof(Index));
             }
