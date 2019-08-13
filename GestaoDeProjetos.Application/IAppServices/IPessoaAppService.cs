@@ -9,7 +9,7 @@ namespace GestaoDeProjetos.Application.IAppServices
         IEnumerable<PessoaViewModel> ObterTodos();
         PessoaViewModel ObterPorId(Guid id);
         PessoaViewModel Adicionar(PessoaViewModel pessoaViewModel);
-        void Editar(Guid id);
+        void Editar(PessoaViewModel pessoaViewModel);
         void Deletar(Guid id);
     }
 }

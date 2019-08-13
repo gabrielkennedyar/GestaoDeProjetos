@@ -13,6 +13,7 @@ namespace GestaoDeProjetos.Domain.Entities
         }
 
         public string Nome { get; set; }
+        public string Funcao { get; set; }
         public string Setor { get; set; }
         public string Contato { get; set; }
         public string Empresa { get; set; }
@@ -21,5 +22,14 @@ namespace GestaoDeProjetos.Domain.Entities
         public virtual ICollection<Projeto> ProjetosCoordenados { get; set; }
         public virtual ICollection<PessoaEquipe> PessoasEquipes { get; set; }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
+
+        public void AtualizarDados(Pessoa pessoa)
+        {
+            Nome = pessoa.Nome;
+            Funcao = pessoa.Funcao;
+            Setor = pessoa.Setor;
+            Contato = pessoa.Contato;
+            Empresa = pessoa.Empresa;
+        }
     }
 }

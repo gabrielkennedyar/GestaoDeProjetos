@@ -47,9 +47,12 @@ namespace GestaoDeProjetos.Application.AppServices
             return _mapper.Map<PessoaViewModel>(pessoa);            
         }
 
-        public void Editar(Guid id)
+        public void Editar(PessoaViewModel pessoaViewModel)
         {
-            var pessoa = _pessoaRepository.ObterPorId(id);
+            var pessoaEditada = _mapper.Map<Pessoa>(pessoaViewModel);
+            var pessoa = _pessoaRepository.ObterPorId(pessoaViewModel.Id);
+
+            pessoa.AtualizarDados(pessoaEditada);
 
             pessoa = _pessoaService.Atualizar(pessoa);
 
