@@ -52,11 +52,11 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 Text = p.Nome,
                 Value = p.Id.ToString()
             }).ToList();
-            //ViewBag.Coordenador = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
-            //{
-            //    Text = p.Nome,
-            //    Value = p.Id.ToString()
-            //}).ToList();
+            ViewBag.Equipes = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
 
             return View();
         }
@@ -101,11 +101,11 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 Text = p.Nome,
                 Value = p.Id.ToString()
             }).ToList();
-            //ViewBag.Coordenador = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
-            //{
-            //    Text = p.Nome,
-            //    Value = p.Id.ToString()
-            //}).ToList();
+            ViewBag.Coordenador = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
 
             return View(projeto);
         }

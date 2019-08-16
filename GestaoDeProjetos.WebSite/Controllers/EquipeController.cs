@@ -48,15 +48,19 @@ namespace GestaoDeProjetos.WebSite.Controllers
         {
             var pessoa = _pessoaAppService.ObterTodos().OrderBy(x => x.Nome).ToList();
 
-            ViewBag.Equipes = pessoa.Select(c => new SelectListItem()
+            ViewBag.Coordenador = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
             {
-                Value = c.Id.ToString(),
-                Text = c.Nome
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
+            ViewBag.Equipes = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
             }).ToList();
 
             return View();
         }
-
         // POST: Equipe/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
