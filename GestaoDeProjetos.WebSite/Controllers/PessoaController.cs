@@ -56,7 +56,6 @@ namespace GestaoDeProjetos.WebSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                pessoa.Id = Guid.NewGuid();
                 _pessoaAppService.Adicionar(pessoa);
                 return RedirectToAction(nameof(Index));
             }
@@ -126,11 +125,6 @@ namespace GestaoDeProjetos.WebSite.Controllers
             _pessoaAppService.Deletar(id);
 
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool PessoaExists(Guid id)
-        {
-            return _pessoaAppService.ObterPorId(id) != null;
         }
     }
 }
