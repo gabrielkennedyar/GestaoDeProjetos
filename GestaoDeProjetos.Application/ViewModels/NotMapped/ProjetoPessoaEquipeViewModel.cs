@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace GestaoDeProjetos.Application.ViewModels
+namespace GestaoDeProjetos.Application.ViewModels.NotMapped
 {
-    public class ProjetoViewModel
+    public class ProjetoPessoaEquipeViewModel
     {
-        public ProjetoViewModel()
-        {
-            Id = Guid.NewGuid();
-            Progresso = 0;
-            Tarefas = new List<TarefaViewModel>();            
-        }
-
         [ScaffoldColumn(false)]
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Informe o nome do projeto")]
-        public string Nome { get; set; }
+        [Display(Name = "Nome do Projeto")]
+        public string NomeProjeto { get; set; }
 
         [Required(ErrorMessage = "Informe a descrição do projeto")]
         [Display(Name = "Descrição")]
@@ -35,14 +28,10 @@ namespace GestaoDeProjetos.Application.ViewModels
         [Range(0, 100)]
         public int Progresso { get; set; }
 
-        [ScaffoldColumn(false)]
-        public Guid CoordenadorId { get; set; }
-        public virtual PessoaViewModel Coordenador { get; set; }
+        [Display(Name = "Coordenador")]
+        public string CoordenadorId { get; set; }
 
-        [ScaffoldColumn(false)]
-        public Guid EquipeId { get; set; }
-        public virtual EquipeViewModel Equipe { get; set; }
-
-        public virtual ICollection<TarefaViewModel> Tarefas { get; set; }
+        [Display(Name = "Equipe")]
+        public string EquipeId { get; set; }
     }
 }
