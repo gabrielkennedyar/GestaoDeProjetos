@@ -24,5 +24,15 @@ namespace GestaoDeProjetos.Domain.Entities
         public virtual Equipe Equipe { get; set; }
 
         public virtual ICollection<Tarefa> Tarefas { get; set; }
+
+        public void AtualizarDados(Projeto projeto)
+        {
+            Nome = projeto.Nome;
+            Descricao = projeto.Descricao;
+            Prioridade = projeto.Prioridade;
+            DataPrevista = projeto.DataPrevista;
+            Relatorio = projeto.Relatorio;
+            Progresso = projeto.Progresso;
+        }
     }
 }
