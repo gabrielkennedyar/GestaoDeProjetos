@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoDeProjetos.Infra.Data.Migrations
 {
     [DbContext(typeof(GestaoDeProjetosContext))]
-    [Migration("20190811234225_PrimeiraVersao")]
-    partial class PrimeiraVersao
+    [Migration("20190815193310_teste2")]
+    partial class teste2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,6 +68,11 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnName("Empresa")
                         .HasMaxLength(200);
+
+                    b.Property<string>("Funcao")
+                        .IsRequired()
+                        .HasColumnName("Funcao")
+                        .HasMaxLength(1000);
 
                     b.Property<string>("Nome")
                         .IsRequired()

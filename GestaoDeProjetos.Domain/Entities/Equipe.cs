@@ -19,5 +19,12 @@ namespace GestaoDeProjetos.Domain.Entities
 
         public virtual ICollection<Projeto> Projetos { get; set; }
         public virtual ICollection<PessoaEquipe> PessoasEquipes { get; set; }
+
+        public void AtualizarDados(Equipe equipe)
+        {
+            Nome = equipe.Nome;
+            Descricao = equipe.Descricao;
+            
+        }
     }
 }

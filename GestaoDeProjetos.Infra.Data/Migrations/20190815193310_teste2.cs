@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GestaoDeProjetos.Infra.Data.Migrations
 {
-    public partial class PrimeiraVersao : Migration
+    public partial class teste2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataModificacao = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
+                    Funcao = table.Column<string>(maxLength: 1000, nullable: false),
                     Setor = table.Column<string>(maxLength: 100, nullable: false),
                     Contato = table.Column<string>(maxLength: 50, nullable: false),
                     Empresa = table.Column<string>(maxLength: 200, nullable: false)

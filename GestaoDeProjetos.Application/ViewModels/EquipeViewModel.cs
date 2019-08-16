@@ -14,6 +14,7 @@ namespace GestaoDeProjetos.Application.ViewModels
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public DateTime DataCadastro { get; set; }
 
         public Guid CoordenadorId { get; set; }
         public virtual PessoaViewModel Coordenador { get; set; }
