@@ -20,6 +20,7 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         public string Prioridade { get; set; }
 
         [Required(ErrorMessage = "Informe a data prevista do projeto")]
+        [DataType(DataType.Date)]
         public DateTime DataPrevista { get; set; }
 
         [Display(Name = "Relatório")]

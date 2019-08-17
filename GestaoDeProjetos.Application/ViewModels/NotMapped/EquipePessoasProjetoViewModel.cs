@@ -20,12 +20,7 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Display(Name = "Ultimo Projeto")]
-        public string EquipeId { get; set; }
-
         [Display(Name = "Data de Criação")]
         public DateTime DataCadastro { get; set; }
-
-
     }
 }
