@@ -6,10 +6,10 @@ namespace GestaoDeProjetos.Domain.Entities
     {
         public EntityBase()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime DataModificacao { get; set; }
     }

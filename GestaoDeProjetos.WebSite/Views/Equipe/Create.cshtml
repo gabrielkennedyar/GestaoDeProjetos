@@ -17,13 +17,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="CoordenadorId" class="control-label"></label>
-                <select asp-for="CoordenadorId" asp-items="@ViewBag.Coordenador" class="form-control"></select>
+                <select asp-for="CoordenadorId" asp-items="@ViewBag.Pessoas" class="form-control"></select>
                 <span asp-validation-for="CoordenadorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntegrantesId" class="control-label"></label>
+                <select multiple asp-for="IntegrantesId" asp-items="@ViewBag.Pessoas" class="form-control"></select>
+                <span asp-validation-for="IntegrantesId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-primary" />

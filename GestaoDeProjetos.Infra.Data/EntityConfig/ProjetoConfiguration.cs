@@ -12,6 +12,7 @@ namespace GestaoDeProjetos.Infra.Data.EntityConfig
 
             builder.HasKey(p => p.Id);
 
+            builder.Property(p => p.Id).IsFixedLength().HasMaxLength(36);
             builder.Property(p => p.Nome).IsRequired().HasMaxLength(200).HasColumnName("Nome");
             builder.Property(p => p.Descricao).IsRequired().HasMaxLength(1000).HasColumnName("Descricao");
             builder.Property(p => p.Prioridade).IsRequired().HasMaxLength(100).HasColumnName("Prioridade");

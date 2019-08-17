@@ -31,15 +31,15 @@ namespace GestaoDeProjetos.Application.AppServices
         {
             return _mapper.Map<IEnumerable<ProjetoViewModel>>(_projetoRepository.ObterTodos());
         }
-        public ProjetoViewModel ObterPorId(Guid id)
+        public ProjetoViewModel ObterPorId(string id)
         {
             return _mapper.Map<ProjetoViewModel>(_projetoRepository.ObterPorId(id));
         }
         public ProjetoViewModel Adicionar(ProjetoViewModel projetoViewModel, string coordenadorId, string equipeId)
         {
             var projeto = _mapper.Map<Projeto>(projetoViewModel);
-            var coordenador = _pessoaRepository.ObterPorId(new Guid(coordenadorId));
-            var equipe = _equipeRepository.ObterPorId(new Guid(equipeId));
+            var coordenador = _pessoaRepository.ObterPorId(coordenadorId);
+            var equipe = _equipeRepository.ObterPorId(equipeId);
 
             projeto.Coordenador = coordenador;
             projeto.Equipe = equipe;
@@ -68,7 +68,7 @@ namespace GestaoDeProjetos.Application.AppServices
 
             return _mapper.Map<ProjetoViewModel>(projeto);
         }
-        public void Deletar(Guid id)
+        public void Deletar(string id)
         {
             var pessoa = _projetoRepository.ObterPorId(id);
 

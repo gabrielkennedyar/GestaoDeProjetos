@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoDeProjetos.Infra.Data.Migrations
 {
     [DbContext(typeof(GestaoDeProjetosContext))]
-    [Migration("20190815193310_teste2")]
-    partial class teste2
+    [Migration("20190817161333_GuidToString")]
+    partial class GuidToString
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,13 +20,13 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
             modelBuilder.Entity("GestaoDeProjetos.Domain.Entities.Equipe", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                        .IsFixedLength(true)
+                        .HasMaxLength(36);
 
-                    b.Property<byte[]>("CoordenadorId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("CoordenadorId")
+                        .IsRequired();
 
                     b.Property<DateTime>("DataCadastro");
 
@@ -51,9 +51,10 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
             modelBuilder.Entity("GestaoDeProjetos.Domain.Entities.Pessoa", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                        .IsFixedLength(true)
+                        .HasMaxLength(36);
 
                     b.Property<string>("Contato")
                         .IsRequired()
@@ -91,9 +92,10 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
             modelBuilder.Entity("GestaoDeProjetos.Domain.Entities.PessoaEquipe", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                        .IsFixedLength(true)
+                        .HasMaxLength(36);
 
                     b.Property<DateTime>("DataAlocacao")
                         .HasColumnName("DataAlocacao");
@@ -102,13 +104,11 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
                     b.Property<DateTime>("DataModificacao");
 
-                    b.Property<byte[]>("EquipeId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("EquipeId")
+                        .IsRequired();
 
-                    b.Property<byte[]>("PessoaId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("PessoaId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -121,13 +121,13 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
             modelBuilder.Entity("GestaoDeProjetos.Domain.Entities.Projeto", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                        .IsFixedLength(true)
+                        .HasMaxLength(36);
 
-                    b.Property<byte[]>("CoordenadorId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("CoordenadorId")
+                        .IsRequired();
 
                     b.Property<DateTime>("DataCadastro");
 
@@ -141,9 +141,8 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                         .HasColumnName("Descricao")
                         .HasMaxLength(1000);
 
-                    b.Property<byte[]>("EquipeId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("EquipeId")
+                        .IsRequired();
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -174,9 +173,10 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
             modelBuilder.Entity("GestaoDeProjetos.Domain.Entities.Tarefa", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                        .IsFixedLength(true)
+                        .HasMaxLength(36);
 
                     b.Property<DateTime>("DataCadastro");
 
@@ -193,12 +193,10 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                         .HasColumnName("Nome")
                         .HasMaxLength(200);
 
-                    b.Property<byte[]>("ProjetoId")
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("ProjetoId");
 
-                    b.Property<byte[]>("ResponsavelId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<string>("ResponsavelId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

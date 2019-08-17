@@ -28,14 +28,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Projeto/Details/5
-        public IActionResult Details(Guid? id)
+        public IActionResult Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var projeto = _projetoAppService.ObterPorId(id.Value);
+            var projeto = _projetoAppService.ObterPorId(id);
             if (projeto == null)
             {
                 return NotFound();
@@ -83,14 +83,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Projeto/Edit/5
-        public IActionResult Edit(Guid? id)
+        public IActionResult Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var projeto = _projetoAppService.ObterPorId(id.Value);
+            var projeto = _projetoAppService.ObterPorId(id);
             if (projeto == null)
             {
                 return NotFound();
@@ -113,7 +113,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // POST: Projeto/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Guid id, [Bind("NomeProjeto,Descricao,Prioridade,DataPrevista,Relatorio,Id,CoordenadorId,EquipeId")] ProjetoPessoaEquipeViewModel projetoPessoaEquipe)
+        public IActionResult Edit(string id, [Bind("NomeProjeto,Descricao,Prioridade,DataPrevista,Relatorio,Id,CoordenadorId,EquipeId")] ProjetoPessoaEquipeViewModel projetoPessoaEquipe)
         {
             if (id != projetoPessoaEquipe.Id)
             {
@@ -139,14 +139,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Projeto/Delete/5
-        public IActionResult Delete(Guid? id)
+        public IActionResult Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var projeto = _projetoAppService.ObterPorId(id.Value);
+            var projeto = _projetoAppService.ObterPorId(id);
 
             if (projeto == null)
             {
@@ -159,7 +159,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // POST: Projeto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(Guid id)
+        public IActionResult DeleteConfirmed(string id)
         {
             _projetoAppService.Deletar(id);
 

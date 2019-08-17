@@ -22,7 +22,7 @@ namespace GestaoDeProjetos.Infra.CrossCutting.IoC
 
         public static void RegisterDbContext(IConfiguration configuration, IServiceCollection services)
         {
-            services.AddDbContext<GestaoDeProjetosContext>(options => options.UseMySQL(configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
+            services.AddDbContext<GestaoDeProjetosContext>(options => options.UseLazyLoadingProxies().UseMySQL(configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
         }
         public static void Register(IServiceCollection services)
         {

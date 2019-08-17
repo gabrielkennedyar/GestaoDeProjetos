@@ -7,7 +7,6 @@ using GestaoDeProjetos.Domain.Interfaces.IServices;
 using GestaoDeProjetos.Domain.Interfaces.IUoW;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace GestaoDeProjetos.Application.AppServices
 {
@@ -29,7 +28,7 @@ namespace GestaoDeProjetos.Application.AppServices
             return _mapper.Map<IEnumerable<PessoaViewModel>>(_pessoaRepository.ObterTodos());
         }
 
-        public PessoaViewModel ObterPorId(Guid id)
+        public PessoaViewModel ObterPorId(string id)
         {
             return _mapper.Map<PessoaViewModel>(_pessoaRepository.ObterPorId(id));
         }
@@ -44,7 +43,7 @@ namespace GestaoDeProjetos.Application.AppServices
                 throw new Exception();
             }
 
-            return _mapper.Map<PessoaViewModel>(pessoa);            
+            return _mapper.Map<PessoaViewModel>(pessoa);
         }
 
         public void Editar(PessoaViewModel pessoaViewModel)
@@ -62,7 +61,7 @@ namespace GestaoDeProjetos.Application.AppServices
             }
         }
 
-        public void Deletar(Guid id)
+        public void Deletar(string id)
         {
             var pessoa = _pessoaRepository.ObterPorId(id);
 

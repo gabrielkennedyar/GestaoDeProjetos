@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GestaoDeProjetos.Application.IAppServices;
 using GestaoDeProjetos.Application.ViewModels;
+using GestaoDeProjetos.Application.ViewModels.NotMapped;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -27,14 +28,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Equipe/Details/5
-        public IActionResult Details(Guid? id)
+        public IActionResult Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var equipe = _equipeAppService.ObterPorId(id.Value);
+            var equipe = _equipeAppService.ObterPorId(id);
             if (equipe == null)
             {
                 return NotFound();
@@ -46,13 +47,11 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // GET: Equipe/Create
         public IActionResult Create()
         {
-            var pessoa = _pessoaAppService.ObterTodos().OrderBy(x => x.Nome).ToList();
-
-            ViewBag.Coordenador = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            ViewBag.Pessoas = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
             {
                 Text = p.Nome,
                 Value = p.Id.ToString()
-            }).ToList();
+            }).OrderBy(x => x.Text).ToList();
 
             return View();
         }
@@ -61,26 +60,30 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Nome,Descricao,Id")] EquipeViewModel equipe)
+        public IActionResult Create([Bind("Nome,CoordenadorId,Descricao,IntegrantesId")] EquipePessoasProjetoViewModel equipePessoasProjeto)
         {
             if (ModelState.IsValid)
             {
-                equipe.Id = Guid.NewGuid();
-                _equipeAppService.Adicionar(equipe);
+                var equipe = new EquipeViewModel()
+                {
+                    Nome = equipePessoasProjeto.Nome,
+                    Descricao = equipePessoasProjeto.Descricao
+                };
+                _equipeAppService.Adicionar(equipe, equipePessoasProjeto.CoordenadorId, equipePessoasProjeto.IntegrantesId);
                 return RedirectToAction(nameof(Index));
             }
-            return View(equipe);
+            return View(equipePessoasProjeto);
         }
 
         // GET: Equipe/Edit/5
-        public IActionResult Edit(Guid? id)
+        public IActionResult Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var equipe = _equipeAppService.ObterPorId(id.Value);
+            var equipe = _equipeAppService.ObterPorId(id);
             if (equipe == null)
             {
                 return NotFound();
@@ -92,7 +95,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Guid id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] EquipeViewModel equipe)
+        public IActionResult Edit(string id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] EquipeViewModel equipe)
         {
             if (id != equipe.Id)
             {
@@ -108,14 +111,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
             return View(equipe);
         }
         // GET: Equipe/Delete/5
-        public IActionResult Delete(Guid? id)
+        public IActionResult Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var equipe = _equipeAppService.ObterPorId(id.Value);
+            var equipe = _equipeAppService.ObterPorId(id);
 
             if (equipe == null)
             {
@@ -127,7 +130,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // POST: Equipe/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(Guid id)
+        public IActionResult DeleteConfirmed(string id)
         {
             _equipeAppService.Deletar(id);
 

@@ -5,8 +5,9 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
 {
     public class ProjetoPessoaEquipeViewModel
     {
+        [Key]
         [ScaffoldColumn(false)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Informe o nome do projeto")]
         [Display(Name = "Nome do Projeto")]

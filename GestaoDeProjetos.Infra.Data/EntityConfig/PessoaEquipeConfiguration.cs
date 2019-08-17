@@ -12,6 +12,7 @@ namespace GestaoDeProjetos.Infra.Data.EntityConfig
 
             builder.HasKey(pe => pe.Id);
 
+            builder.Property(pe => pe.Id).IsFixedLength().HasMaxLength(36);
             builder.Property(pe => pe.DataAlocacao).IsRequired().HasColumnName("DataAlocacao");
 
             builder.HasOne(pe => pe.Pessoa).WithMany(p => p.PessoasEquipes).IsRequired().HasForeignKey(pe => pe.PessoaId);

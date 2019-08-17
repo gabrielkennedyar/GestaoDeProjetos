@@ -1,16 +1,15 @@
 ﻿using GestaoDeProjetos.Application.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GestaoDeProjetos.Application.IAppServices
 {
     public interface IEquipeAppService : IDisposable
     {
         IEnumerable<EquipeViewModel> ObterTodos();
-        EquipeViewModel ObterPorId(Guid id);
-        EquipeViewModel Adicionar(EquipeViewModel equipeViewModel);
+        EquipeViewModel ObterPorId(string id);
+        EquipeViewModel Adicionar(EquipeViewModel equipeViewModel, string coordenadorId, string[] integrantesId);
         void Editar(EquipeViewModel equipeViewModel);
-        void Deletar(Guid id);
+        void Deletar(string id);
     }
 }
