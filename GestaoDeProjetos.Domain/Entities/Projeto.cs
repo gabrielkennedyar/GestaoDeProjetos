@@ -16,7 +16,7 @@ namespace GestaoDeProjetos.Domain.Entities
         public DateTime DataPrevista { get; set; }
         public string Relatorio { get; set; }
         public int Progresso { get; set; }
-
+        public string Status { get; set; }
         public string CoordenadorId { get; set; }
         public virtual Pessoa Coordenador { get; set; }
 

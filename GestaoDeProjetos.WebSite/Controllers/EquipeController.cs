@@ -36,6 +36,15 @@ namespace GestaoDeProjetos.WebSite.Controllers
             }
 
             var equipe = _equipeAppService.ObterPorId(id);
+            var detalheEquipe = new DetalhesEquipeViewModel
+            {
+                Nome = equipe.Nome,
+                Descricao = equipe.Descricao,
+                DataCadastro = equipe.DataCadastro,
+                DataPrevista = equipe.DataPrevista,
+                Status = equipe.Status,
+                Projeto = equipe.Projetos
+            };
             if (equipe == null)
             {
                 return NotFound();

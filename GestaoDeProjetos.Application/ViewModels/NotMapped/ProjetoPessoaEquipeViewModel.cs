@@ -17,6 +17,9 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
+        [Display(Name = "Status do Projeto")]
+        public string Status { get; set; }
+
         [Required(ErrorMessage = "Informe a prioridade do projeto")]
         public string Prioridade { get; set; }
 

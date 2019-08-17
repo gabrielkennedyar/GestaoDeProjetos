@@ -30,6 +30,9 @@ namespace GestaoDeProjetos.Application.ViewModels
         [Required(ErrorMessage = "Informe a data prevista do projeto")]
         public DateTime DataPrevista { get; set; }
 
+        [Display(Name = "Status do Projeto")]
+        public string Status { get; set; }
+
         [Display(Name = "Relatório")]
         public string Relatorio { get; set; }
 

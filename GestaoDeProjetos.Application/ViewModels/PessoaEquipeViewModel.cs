@@ -2,9 +2,9 @@
 
 namespace GestaoDeProjetos.Application.ViewModels
 {
-    public class PessoaEquipeViewModel
+    public class DetalhesEquipeViewModelViewModel
     {
-        public PessoaEquipeViewModel()
+        public DetalhesEquipeViewModelViewModel()
         {
             Id = Guid.NewGuid().ToString();
         }

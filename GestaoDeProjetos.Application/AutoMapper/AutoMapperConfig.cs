@@ -12,7 +12,7 @@ namespace GestaoDeProjetos.Application.AutoMapper
             {
                 cfg.CreateMap<Equipe, EquipeViewModel>().ReverseMap();
                 cfg.CreateMap<Pessoa, PessoaViewModel>().ReverseMap();
-                cfg.CreateMap<PessoaEquipe, PessoaEquipeViewModel>().ReverseMap();
+                cfg.CreateMap<PessoaEquipe, DetalhesEquipeViewModelViewModel>().ReverseMap();
                 cfg.CreateMap<Projeto, ProjetoViewModel>().ReverseMap();
                 cfg.CreateMap<Tarefa, TarefaViewModel>().ReverseMap();
             });
