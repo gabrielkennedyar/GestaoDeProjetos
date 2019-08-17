@@ -6,8 +6,9 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
 {
     public class EquipePessoasProjetoViewModel
     {
+        [Key]
         [ScaffoldColumn(false)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Informe o nome da Equipe")]
         [Display(Name = "Nome da Equipe")]
@@ -19,6 +20,9 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Required(ErrorMessage = "Informe a descrição do projeto")]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
+
+        [Display(Name = "Integrantes")]
+        public string[] IntegrantesId { get; set; }
 
         [Display(Name = "Data de Criação")]
         public DateTime DataCadastro { get; set; }

@@ -7,9 +7,9 @@ namespace GestaoDeProjetos.Application.IAppServices
     public interface IProjetoAppService : IDisposable
     {
         IEnumerable<ProjetoViewModel> ObterTodos();
-        ProjetoViewModel ObterPorId(Guid id);
+        ProjetoViewModel ObterPorId(string id);
         ProjetoViewModel Adicionar(ProjetoViewModel projetoViewModel, string coordenadorId, string equipeId);
         ProjetoViewModel Editar(ProjetoViewModel projetoViewModel, string coordenadorId, string equipeId);
-        void Deletar(Guid id);
+        void Deletar(string id);
     }
 }

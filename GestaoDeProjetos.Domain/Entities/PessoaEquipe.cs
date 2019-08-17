@@ -6,10 +6,10 @@ namespace GestaoDeProjetos.Domain.Entities
     {
         public DateTime DataAlocacao { get; set; }
 
-        public Guid PessoaId { get; set; }
+        public string PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
 
-        public Guid EquipeId { get; set; }
+        public string EquipeId { get; set; }
         public virtual Equipe Equipe { get; set; }
     }
 }

@@ -17,10 +17,10 @@ namespace GestaoDeProjetos.Domain.Entities
         public string Relatorio { get; set; }
         public int Progresso { get; set; }
 
-        public Guid CoordenadorId { get; set; }
+        public string CoordenadorId { get; set; }
         public virtual Pessoa Coordenador { get; set; }
 
-        public Guid EquipeId { get; set; }
+        public string EquipeId { get; set; }
         public virtual Equipe Equipe { get; set; }
 
         public virtual ICollection<Tarefa> Tarefas { get; set; }
