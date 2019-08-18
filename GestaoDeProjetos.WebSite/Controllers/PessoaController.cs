@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GestaoDeProjetos.Application.ViewModels;
 using GestaoDeProjetos.Application.IAppServices;
+using GestaoDeProjetos.Application.ViewModels.NotMapped;
 
 namespace GestaoDeProjetos.WebSite.Controllers
 {
@@ -38,7 +39,17 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 return NotFound();
             }
 
-            return View(pessoa);
+            var detalhepessoas = new DetalhesPessoaViewModel
+            {
+                Id = pessoa.Id,
+                Funcao = pessoa.Funcao,
+                Nome = pessoa.Nome,
+                DataCadastro = pessoa.DataCadastro,
+                Projetos = pessoa.ProjetosCoordenados,
+                PessoasEquipe = pessoa.PessoasEquipes
+            };
+
+            return View(detalhepessoas);
         }
 
         // GET: Pessoa/Create

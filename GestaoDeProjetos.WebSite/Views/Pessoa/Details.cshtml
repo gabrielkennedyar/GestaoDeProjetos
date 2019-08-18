@@ -1,54 +1,84 @@
-﻿@model GestaoDeProjetos.Application.ViewModels.PessoaViewModel
+﻿@model GestaoDeProjetos.Application.ViewModels.NotMapped.DetalhesPessoaViewModel
 
 @{
     ViewData["Title"] = "Detalhes";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-center">@Html.DisplayFor(model => model.Nome)</h1>
 
-<div>
-    <h4>Pessoa</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Funcao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Funcao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Setor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Setor)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Contato)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Contato)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Empresa)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Empresa)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DataCadastro)
-        </dd>
-    </dl>
+<br />
+<div class="row">
+    <div class="col-sm-4">
+        <h4>@Html.DisplayNameFor(model => model.Funcao)</h4>
+        <p>@Html.DisplayFor(model => model.Funcao)</p>
+        <hr />
+        <hr />
+        <h4>Datas</h4>
+        <dl class="row">
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.DataCadastro)
+            </dd>
+        </dl>
+        <hr />
+        <h4>Ultimas Equipes</h4>
+        @foreach (var pessoaEquipe in Model.PessoasEquipe)
+        {
+            <p>
+                @pessoaEquipe.Pessoa.EquipesCoordenadas
+            </p>
+        }
+    </div>
+    <table class="table table-hover col-sm-8">
+        <thead>
+            <tr>
+                <th>
+                    Projetos
+                </th>
+                <th>
+                    Responsável
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Inicio
+                </th>
+                <th>
+                    Previsao
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var projeto in Model.Projetos)
+            {
+                <tr>
+                    <td>
+                        @projeto.Nome
+                    </td>
+                    <td>
+                        @projeto.Coordenador.Nome
+                    </td>
+                    <td>
+                        @projeto.Status
+                    </td>
+                    <td>
+                        @projeto.DataInicio.ToShortDateString()
+                    </td>
+                    <td>
+                        @projeto.DataPrevista.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
     <a asp-action="Index">Voltar</a>
 </div>
+
+
+
