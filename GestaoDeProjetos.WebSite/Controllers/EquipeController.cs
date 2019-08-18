@@ -43,6 +43,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
 
             var detalheEquipe = new DetalhesEquipeViewModel
             {
+                Id = equipe.Id,
                 Nome = equipe.Nome,
                 Descricao = equipe.Descricao,
                 DataCadastro = equipe.DataCadastro,
@@ -82,6 +83,12 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 _equipeAppService.Adicionar(equipe, equipePessoasProjeto.CoordenadorId, equipePessoasProjeto.IntegrantesId);
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Pessoas = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).OrderBy(x => x.Text).ToList();
             return View(equipePessoasProjeto);
         }
 
@@ -98,27 +105,61 @@ namespace GestaoDeProjetos.WebSite.Controllers
             {
                 return NotFound();
             }
-            return View(equipe);
+
+            ViewBag.Pessoas = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).OrderBy(x => x.Text).ToList();
+            var equipePessoasProjeto = new EquipePessoasProjetoViewModel()
+            {
+                Id = equipe.Id,
+                Nome = equipe.Nome,
+                CoordenadorId = equipe.CoordenadorId,
+                Descricao = equipe.Descricao,
+                IntegrantesId = equipe.PessoasEquipes.Select(x => x.Pessoa.Id).ToArray(),
+                DataCadastro = equipe.DataCadastro
+            };
+
+            ViewBag.Pessoas = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).OrderBy(x => x.Text).ToList();
+            return View(equipePessoasProjeto);
         }
         // POST: Equipe/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] EquipeViewModel equipe)
+        public IActionResult Edit(string id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] EquipePessoasProjetoViewModel equipePessoasProjeto)
         {
-            if (id != equipe.Id)
+            if (id != equipePessoasProjeto.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                _equipeAppService.Editar(equipe);
+                var equipe = new EquipeViewModel()
+                {
+                    Id = id,
+                    Nome = equipePessoasProjeto.Nome,
+                    Descricao = equipePessoasProjeto.Descricao
+                };
+
+                _equipeAppService.Editar(equipe, equipePessoasProjeto.CoordenadorId, equipePessoasProjeto.IntegrantesId);
 
                 return RedirectToAction(nameof(Index));
             }
-            return View(equipe);
+
+            ViewBag.Pessoas = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).OrderBy(x => x.Text).ToList();
+            return View(equipePessoasProjeto);
         }
         // GET: Equipe/Delete/5
         public IActionResult Delete(string id)

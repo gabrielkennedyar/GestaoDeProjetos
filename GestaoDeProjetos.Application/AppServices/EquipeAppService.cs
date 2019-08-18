@@ -72,12 +72,71 @@ namespace GestaoDeProjetos.Application.AppServices
             return _mapper.Map<EquipeViewModel>(equipe);
         }
 
-        public void Editar(EquipeViewModel equipeViewModel)
+        public void Editar(EquipeViewModel equipeViewModel, string coordenadorId, string[] integrantesId)
         {
             var equipeEditada = _mapper.Map<Equipe>(equipeViewModel);
             var equipe = _equipeRepository.ObterPorId(equipeViewModel.Id);
 
             equipe.AtualizarDados(equipeEditada);
+            if (equipe.CoordenadorId != coordenadorId)
+            {
+                var novoCoordenador = _pessoaRepository.ObterPorId(coordenadorId);
+                equipe.Coordenador = novoCoordenador;
+                equipe.CoordenadorId = novoCoordenador.Id;
+            }
+
+
+            var listaNovosIntegrantes = new List<PessoaEquipe>();
+            var listaRemoverIntegrantes = new List<PessoaEquipe>();
+
+            var integrantesCadastrados = equipe.PessoasEquipes;
+            foreach (var integranteCadastrado in integrantesCadastrados)
+            {
+                var achou = false;
+                foreach (var integranteId in integrantesId)
+                {
+                    if (integranteCadastrado.Id == integranteId)
+                    {
+                        achou = true;
+                        break;
+                    }
+                }
+                if (!achou)
+                {
+                    listaRemoverIntegrantes.Add(integranteCadastrado);
+                }
+            }
+
+            foreach (var integranteId in integrantesId)
+            {
+                var achou = false;
+                foreach (var integranteCadastrado in integrantesCadastrados)
+                {
+                    if (integranteId == integranteCadastrado.Id)
+                    {
+                        achou = true;
+                        break;
+                    }
+                }
+                if (!achou)
+                {
+                    listaNovosIntegrantes.Add(new PessoaEquipe()
+                    {
+                        DataAlocacao = DateTime.Now,
+                        Pessoa = _pessoaRepository.ObterPorId(integranteId),
+                        Equipe = equipe
+                    });
+                }
+            }
+
+            foreach (var integranteRemover in listaRemoverIntegrantes)
+            {
+                equipe.PessoasEquipes.Remove(integranteRemover);
+            }
+            foreach (var integranteAdicionar in listaNovosIntegrantes)
+            {
+                equipe.PessoasEquipes.Add(integranteAdicionar);
+            }
 
             equipe = _equipeService.Atualizar(equipe);
 

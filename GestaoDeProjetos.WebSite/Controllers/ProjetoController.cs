@@ -81,6 +81,17 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 _projetoAppService.Adicionar(projeto, projetoPessoaEquipe.CoordenadorId, projetoPessoaEquipe.EquipeId);
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Coordenador = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
+            ViewBag.Equipes = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
             return View(projetoPessoaEquipe);
         }
 
@@ -103,13 +114,28 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 Text = p.Nome,
                 Value = p.Id.ToString()
             }).ToList();
-            ViewBag.Coordenador = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
+            ViewBag.Equipes = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
             {
                 Text = p.Nome,
                 Value = p.Id.ToString()
             }).ToList();
 
-            return View(projeto);
+            var projetoPessoaEquipe = new ProjetoPessoaEquipeViewModel()
+            {
+                Id = projeto.Id,
+                NomeProjeto = projeto.Nome,
+                Descricao = projeto.Descricao,
+                Status = projeto.Status,
+                Prioridade = projeto.Prioridade,
+                DataInicio = projeto.DataInicio,
+                DataPrevista = projeto.DataPrevista,
+                Relatorio = projeto.Relatorio,
+                Progresso = projeto.Progresso,
+                CoordenadorId = projeto.CoordenadorId,
+                EquipeId = projeto.EquipeId
+            };
+
+            return View(projetoPessoaEquipe);
         }
 
         // POST: Projeto/Edit/5
@@ -126,6 +152,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
             {
                 var projeto = new ProjetoViewModel()
                 {
+                    Id = id,
                     Nome = projetoPessoaEquipe.NomeProjeto,
                     Descricao = projetoPessoaEquipe.Descricao,
                     Prioridade = projetoPessoaEquipe.Prioridade,
@@ -138,6 +165,17 @@ namespace GestaoDeProjetos.WebSite.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewBag.Coordenador = _pessoaAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
+            ViewBag.Equipes = _equipeAppService.ObterTodos().Select(p => new SelectListItem()
+            {
+                Text = p.Nome,
+                Value = p.Id.ToString()
+            }).ToList();
             return View(projetoPessoaEquipe);
         }
 

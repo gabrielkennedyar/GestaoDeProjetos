@@ -20,8 +20,6 @@ namespace GestaoDeProjetos.Application.ViewModels
         public DateTime DataModificacao { get; set; }
         public DateTime DataPrevista { get; set; }
 
-        public string Status { get; set; }
-
         public string CoordenadorId { get; set; }
         public virtual PessoaViewModel Coordenador { get; set; }
 

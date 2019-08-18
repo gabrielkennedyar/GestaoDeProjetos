@@ -18,9 +18,11 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         public string Descricao { get; set; }
 
         [DisplayName("Criação")]
+        [DataType(DataType.Date)]
         public DateTime DataCadastro { get; set; }
 
         [DisplayName("Última atualização")]
+        [DataType(DataType.Date)]
         public DateTime DataModificacao { get; set; }
 
         public virtual ICollection<ProjetoViewModel> Projetos { get; set; }

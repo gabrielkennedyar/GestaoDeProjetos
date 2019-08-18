@@ -9,7 +9,7 @@ namespace GestaoDeProjetos.Application.IAppServices
         IEnumerable<EquipeViewModel> ObterTodos();
         EquipeViewModel ObterPorId(string id);
         EquipeViewModel Adicionar(EquipeViewModel equipeViewModel, string coordenadorId, string[] integrantesId);
-        void Editar(EquipeViewModel equipeViewModel);
+        void Editar(EquipeViewModel equipeViewModel, string coordenadorId, string[] integrantesId);
         void Deletar(string id);
     }
 }

@@ -29,6 +29,7 @@
                 <select multiple asp-for="IntegrantesId" asp-items="@ViewBag.Pessoas" class="form-control"></select>
                 <span asp-validation-for="IntegrantesId" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <input type="submit" value="Cadastrar" class="btn btn-primary" />
             </div>
