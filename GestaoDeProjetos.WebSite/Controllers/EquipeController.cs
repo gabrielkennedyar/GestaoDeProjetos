@@ -35,22 +35,23 @@ namespace GestaoDeProjetos.WebSite.Controllers
                 return NotFound();
             }
 
-            var equipe = _equipeAppService.ObterPorId(id);
-            var detalheEquipe = new DetalhesEquipeViewModel
-            {
-                Nome = equipe.Nome,
-                Descricao = equipe.Descricao,
-                DataCadastro = equipe.DataCadastro,
-                DataPrevista = equipe.DataPrevista,
-                Status = equipe.Status,
-                Projeto = equipe.Projetos
-            };
+            var equipe = _equipeAppService.ObterPorId(id);            
             if (equipe == null)
             {
                 return NotFound();
             }
 
-            return View(equipe);
+            var detalheEquipe = new DetalhesEquipeViewModel
+            {
+                Nome = equipe.Nome,
+                Descricao = equipe.Descricao,
+                DataCadastro = equipe.DataCadastro,
+                DataModificacao = equipe.DataModificacao,
+                Projetos = equipe.Projetos,
+                PessoasEquipe = equipe.PessoasEquipes
+            };
+
+            return View(detalheEquipe);
         }
 
         // GET: Equipe/Create

@@ -10,14 +10,14 @@ namespace GestaoDeProjetos.Application.ViewModels
         {
             Id = Guid.NewGuid().ToString();
             Projetos = new List<ProjetoViewModel>();
-            PessoasEquipes = new List<DetalhesEquipeViewModelViewModel>();
-           
+            PessoasEquipes = new List<PessoaEquipeViewModel>();           
         }
 
         public string Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public DateTime DataCadastro { get; set; }
+        public DateTime DataModificacao { get; set; }
         public DateTime DataPrevista { get; set; }
 
         public string Status { get; set; }
@@ -26,9 +26,6 @@ namespace GestaoDeProjetos.Application.ViewModels
         public virtual PessoaViewModel Coordenador { get; set; }
 
         public virtual ICollection<ProjetoViewModel> Projetos { get; set; }
-        public virtual ICollection<DetalhesEquipeViewModelViewModel> PessoasEquipes { get; set; }
-
-       
-
+        public virtual ICollection<PessoaEquipeViewModel> PessoasEquipes { get; set; }
     }
 }

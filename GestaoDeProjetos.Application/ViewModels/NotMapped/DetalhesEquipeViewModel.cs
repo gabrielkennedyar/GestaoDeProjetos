@@ -1,9 +1,7 @@
-﻿using GestaoDeProjetos.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace GestaoDeProjetos.Application.ViewModels.NotMapped
 {
@@ -13,29 +11,19 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [ScaffoldColumn(false)]
         public string Id { get; set; }
 
-        [Required(ErrorMessage = "Informe o nome da Equipe")]
         [Display(Name = "Nome da Equipe")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Informe a descrição do projeto")]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Required(AllowEmptyStrings = true)]
-        [DisplayName("Data de Adição")]
+        [DisplayName("Criação")]
         public DateTime DataCadastro { get; set; }
 
-        [Required(ErrorMessage = "Informe a data prevista do projeto")]
-        [DataType(DataType.Date)]
-        public DateTime DataPrevista { get; set; }
+        [DisplayName("Última atualização")]
+        public DateTime DataModificacao { get; set; }
 
-        [Display(Name = "Status do Projeto")]
-        public string Status { get; set; }
-
-        public virtual List<DetalhesEquipeViewModelViewModel> DetalhePessoaEquipe { get; set; }
-
-        public virtual List<Projeto> Projeto { get; set; }
-
-
+        public virtual ICollection<ProjetoViewModel> Projetos { get; set; }
+        public virtual ICollection<PessoaEquipeViewModel> PessoasEquipe { get; set; }
     }
 }

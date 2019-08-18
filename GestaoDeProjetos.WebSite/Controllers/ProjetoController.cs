@@ -64,7 +64,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // POST: Projeto/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("NomeProjeto,Descricao,Prioridade,DataPrevista,Relatorio,CoordenadorId,EquipeId")] ProjetoPessoaEquipeViewModel projetoPessoaEquipe)
+        public IActionResult Create([Bind("NomeProjeto,Descricao,Prioridade,DataInicio,DataPrevista,Relatorio,CoordenadorId,EquipeId")] ProjetoPessoaEquipeViewModel projetoPessoaEquipe)
         {
             if (ModelState.IsValid)
             {
@@ -73,8 +73,10 @@ namespace GestaoDeProjetos.WebSite.Controllers
                     Nome = projetoPessoaEquipe.NomeProjeto,
                     Descricao = projetoPessoaEquipe.Descricao,
                     Prioridade = projetoPessoaEquipe.Prioridade,
+                    DataInicio = projetoPessoaEquipe.DataInicio,
                     DataPrevista = projetoPessoaEquipe.DataPrevista,
-                    Relatorio = projetoPessoaEquipe.Relatorio
+                    Relatorio = projetoPessoaEquipe.Relatorio,
+                    Status = "Início"
                 };
                 _projetoAppService.Adicionar(projeto, projetoPessoaEquipe.CoordenadorId, projetoPessoaEquipe.EquipeId);
                 return RedirectToAction(nameof(Index));
@@ -113,7 +115,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // POST: Projeto/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, [Bind("NomeProjeto,Descricao,Prioridade,DataPrevista,Relatorio,Id,CoordenadorId,EquipeId")] ProjetoPessoaEquipeViewModel projetoPessoaEquipe)
+        public IActionResult Edit(string id, [Bind("NomeProjeto,Descricao,Prioridade,DataInicio,DataPrevista,Relatorio,Id,CoordenadorId,EquipeId")] ProjetoPessoaEquipeViewModel projetoPessoaEquipe)
         {
             if (id != projetoPessoaEquipe.Id)
             {
@@ -127,6 +129,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
                     Nome = projetoPessoaEquipe.NomeProjeto,
                     Descricao = projetoPessoaEquipe.Descricao,
                     Prioridade = projetoPessoaEquipe.Prioridade,
+                    DataInicio = projetoPessoaEquipe.DataInicio,
                     DataPrevista = projetoPessoaEquipe.DataPrevista,
                     Relatorio = projetoPessoaEquipe.Relatorio
                 };

@@ -12,7 +12,7 @@ namespace GestaoDeProjetos.Application.ViewModels
             Id = Guid.NewGuid().ToString();
             EquipesCoordenadas = new List<EquipeViewModel>();
             ProjetosCoordenados = new List<ProjetoViewModel>();
-            PessoasEquipes = new List<DetalhesEquipeViewModelViewModel>();
+            PessoasEquipes = new List<PessoaEquipeViewModel>();
             Tarefas = new List<TarefaViewModel>();
         }
 
@@ -41,7 +41,7 @@ namespace GestaoDeProjetos.Application.ViewModels
 
         public virtual ICollection<EquipeViewModel> EquipesCoordenadas { get; set; }
         public virtual ICollection<ProjetoViewModel> ProjetosCoordenados { get; set; }
-        public virtual ICollection<DetalhesEquipeViewModelViewModel> PessoasEquipes { get; set; }
+        public virtual ICollection<PessoaEquipeViewModel> PessoasEquipes { get; set; }
         public virtual ICollection<TarefaViewModel> Tarefas { get; set; }
     }
 }
