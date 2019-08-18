@@ -89,13 +89,12 @@ namespace GestaoDeProjetos.Application.AppServices
             var listaNovosIntegrantes = new List<PessoaEquipe>();
             var listaRemoverIntegrantes = new List<PessoaEquipe>();
 
-            var integrantesCadastrados = equipe.PessoasEquipes;
-            foreach (var integranteCadastrado in integrantesCadastrados)
+            foreach (var pessoaEquipeCadastrado in equipe.PessoasEquipes)
             {
                 var achou = false;
                 foreach (var integranteId in integrantesId)
                 {
-                    if (integranteCadastrado.Id == integranteId)
+                    if (pessoaEquipeCadastrado.PessoaId == integranteId)
                     {
                         achou = true;
                         break;
@@ -103,16 +102,16 @@ namespace GestaoDeProjetos.Application.AppServices
                 }
                 if (!achou)
                 {
-                    listaRemoverIntegrantes.Add(integranteCadastrado);
+                    listaRemoverIntegrantes.Add(pessoaEquipeCadastrado);
                 }
             }
 
             foreach (var integranteId in integrantesId)
             {
                 var achou = false;
-                foreach (var integranteCadastrado in integrantesCadastrados)
+                foreach (var integranteCadastrado in equipe.PessoasEquipes)
                 {
-                    if (integranteId == integranteCadastrado.Id)
+                    if (integranteId == integranteCadastrado.PessoaId)
                     {
                         achou = true;
                         break;

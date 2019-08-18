@@ -133,7 +133,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] EquipePessoasProjetoViewModel equipePessoasProjeto)
+        public IActionResult Edit(string id, [Bind("Nome,CoordenadorId,Descricao,IntegrantesId,Id")] EquipePessoasProjetoViewModel equipePessoasProjeto)
         {
             if (id != equipePessoasProjeto.Id)
             {
