@@ -23,6 +23,9 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [DisplayName("Data de Adição")]
         public DateTime DataCadastro { get; set; }
 
+        [Required(ErrorMessage = "Informe o setor da pessoa")]
+        public string Setor { get; set; }
+
         public virtual ICollection<ProjetoViewModel> Projetos { get; set; }
         public virtual ICollection<PessoaEquipeViewModel> PessoasEquipe { get; set; }
 
