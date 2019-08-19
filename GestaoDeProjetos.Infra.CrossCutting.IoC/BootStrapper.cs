@@ -5,9 +5,12 @@ using GestaoDeProjetos.Domain.Interfaces.IRepositories;
 using GestaoDeProjetos.Domain.Interfaces.IServices;
 using GestaoDeProjetos.Domain.Interfaces.IUoW;
 using GestaoDeProjetos.Domain.Services;
+using GestaoDeProjetos.Infra.CrossCutting.Identity.Context;
 using GestaoDeProjetos.Infra.Data.Context;
 using GestaoDeProjetos.Infra.Data.Repositories;
 using GestaoDeProjetos.Infra.Data.UoW;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +26,11 @@ namespace GestaoDeProjetos.Infra.CrossCutting.IoC
         public static void RegisterDbContext(IConfiguration configuration, IServiceCollection services)
         {
             services.AddDbContext<GestaoDeProjetosContext>(options => options.UseLazyLoadingProxies().UseMySQL(configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
+        }
+        public static void RegisterIdentity(IConfiguration configuration, IServiceCollection services)
+        {
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>().AddDefaultUI(UIFramework.Bootstrap4).AddEntityFrameworkStores<ApplicationDbContext>();
         }
         public static void Register(IServiceCollection services)
         {

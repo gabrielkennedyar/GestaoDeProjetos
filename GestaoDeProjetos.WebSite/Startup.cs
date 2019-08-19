@@ -37,6 +37,8 @@ namespace GestaoDeProjetos.WebSite
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            BootStrapper.RegisterIdentity(Configuration, services);
+
             // Configura o mapeamento model viewModel
             var mapper = AutoMapperConfig.RegisterMappings();
             BootStrapper.RegisterMappings(services, mapper);
@@ -50,6 +52,7 @@ namespace GestaoDeProjetos.WebSite
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -61,6 +64,8 @@ namespace GestaoDeProjetos.WebSite
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
