@@ -8,7 +8,7 @@ namespace GestaoDeProjetos.Domain.Interfaces.IRepositories
         void Adicionar(TEntity obj);
         void Atualizar(TEntity obj);
         void Remover(TEntity obj);
-        void Remover(Guid id);
+        void Remover(string id);
         int SaveChanges();
     }
 }

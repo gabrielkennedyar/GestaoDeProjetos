@@ -5,8 +5,9 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
 {
     public class ProjetoPessoaEquipeViewModel
     {
+        [Key]
         [ScaffoldColumn(false)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Informe o nome do projeto")]
         [Display(Name = "Nome do Projeto")]
@@ -16,10 +17,18 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
+        [Display(Name = "Status do Projeto")]
+        public string Status { get; set; }
+
         [Required(ErrorMessage = "Informe a prioridade do projeto")]
         public string Prioridade { get; set; }
 
+        [Required(ErrorMessage = "Informe a data de início do projeto")]
+        [DataType(DataType.Date)]
+        public DateTime DataInicio { get; set; }
+
         [Required(ErrorMessage = "Informe a data prevista do projeto")]
+        [DataType(DataType.Date)]
         public DateTime DataPrevista { get; set; }
 
         [Display(Name = "Relatório")]

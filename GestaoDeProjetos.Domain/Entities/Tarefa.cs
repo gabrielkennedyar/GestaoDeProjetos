@@ -8,7 +8,7 @@ namespace GestaoDeProjetos.Domain.Entities
         public DateTime DataInicio { get; set; }
         public DateTime DataPrevista { get; set; }
 
-        public Guid ResponsavelId { get; set; }
+        public string ResponsavelId { get; set; }
         public virtual Pessoa Responsavel { get; set; }
     }
 }

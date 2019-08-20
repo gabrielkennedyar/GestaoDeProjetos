@@ -1,0 +1,86 @@
+﻿@model GestaoDeProjetos.Application.ViewModels.NotMapped.DetalhesEquipeViewModel
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1 class="text-center">@Html.DisplayFor(model => model.Nome)</h1>
+
+<br />
+<div class="row">
+    <div class="col-sm-4">
+        <h4>@Html.DisplayNameFor(model => model.Descricao)</h4>
+        <p>@Html.DisplayFor(model => model.Descricao)</p>
+        <hr />
+        <h4>Datas</h4>
+        <dl class="row">
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.DataCadastro)
+            </dd>
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.DataModificacao)
+            </dt>
+            <dd class="col-sm-4">
+                @Html.DisplayFor(model => model.DataModificacao)
+            </dd>
+        </dl>
+        <hr />
+        <h4>Membros</h4>
+        @foreach (var pessoaEquipe in Model.PessoasEquipe)
+        {
+            <p>
+                @pessoaEquipe.Pessoa.Nome
+            </p>
+        }
+    </div>
+    <table class="table table-hover col-sm-8">
+        <thead>
+            <tr>
+                <th>
+                    Projetos
+                </th>
+                <th>
+                    Responsável
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Inicio
+                </th>
+                <th>
+                    Previsao
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var projeto in Model.Projetos)
+            {
+                <tr>
+                    <td>
+                        @projeto.Nome
+                    </td>
+                    <td>
+                        @projeto.Coordenador.Nome
+                    </td>
+                    <td>
+                        @projeto.Status
+                    </td>
+                    <td>
+                        @projeto.DataInicio.ToShortDateString()
+                    </td>
+                    <td>
+                        @projeto.DataPrevista.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>
+

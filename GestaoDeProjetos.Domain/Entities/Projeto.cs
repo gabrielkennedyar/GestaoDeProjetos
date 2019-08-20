@@ -13,14 +13,15 @@ namespace GestaoDeProjetos.Domain.Entities
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Prioridade { get; set; }
+        public DateTime DataInicio { get; set; }
         public DateTime DataPrevista { get; set; }
         public string Relatorio { get; set; }
         public int Progresso { get; set; }
-
-        public Guid CoordenadorId { get; set; }
+        public string Status { get; set; }
+        public string CoordenadorId { get; set; }
         public virtual Pessoa Coordenador { get; set; }
 
-        public Guid EquipeId { get; set; }
+        public string EquipeId { get; set; }
         public virtual Equipe Equipe { get; set; }
 
         public virtual ICollection<Tarefa> Tarefas { get; set; }
@@ -30,6 +31,7 @@ namespace GestaoDeProjetos.Domain.Entities
             Nome = projeto.Nome;
             Descricao = projeto.Descricao;
             Prioridade = projeto.Prioridade;
+            DataInicio = projeto.DataInicio;
             DataPrevista = projeto.DataPrevista;
             Relatorio = projeto.Relatorio;
             Progresso = projeto.Progresso;

@@ -32,7 +32,7 @@ namespace GestaoDeProjetos.Infra.Data.Repositories
             entry.State = EntityState.Modified;
         }
 
-        public virtual void Remover(Guid id)
+        public virtual void Remover(string id)
         {
             var entity = new TEntity { Id = id };
             Remover(entity);
@@ -53,7 +53,7 @@ namespace GestaoDeProjetos.Infra.Data.Repositories
             return DbSet.AsNoTracking().ToList();
         }
 
-        public virtual TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(string id)
         {
             return DbSet.Find(id);
         }

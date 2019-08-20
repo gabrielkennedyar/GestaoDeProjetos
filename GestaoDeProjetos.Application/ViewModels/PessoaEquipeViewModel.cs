@@ -4,13 +4,18 @@ namespace GestaoDeProjetos.Application.ViewModels
 {
     public class PessoaEquipeViewModel
     {
-        public Guid Id { get; set; }
+        public PessoaEquipeViewModel()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
+
+        public string Id { get; set; }
         public DateTime DataAlocacao { get; set; }
 
-        public Guid PessoaId { get; set; }
+        public string PessoaId { get; set; }
         public virtual PessoaViewModel Pessoa { get; set; }
 
-        public Guid EquipeId { get; set; }
+        public string EquipeId { get; set; }
         public virtual EquipeViewModel Equipe { get; set; }
     }
 }

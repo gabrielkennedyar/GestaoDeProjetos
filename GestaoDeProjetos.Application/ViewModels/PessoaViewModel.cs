@@ -9,7 +9,7 @@ namespace GestaoDeProjetos.Application.ViewModels
     {
         public PessoaViewModel()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             EquipesCoordenadas = new List<EquipeViewModel>();
             ProjetosCoordenados = new List<ProjetoViewModel>();
             PessoasEquipes = new List<PessoaEquipeViewModel>();
@@ -17,7 +17,8 @@ namespace GestaoDeProjetos.Application.ViewModels
         }
 
         [Key]
-        public Guid Id { get; set; }
+        [ScaffoldColumn(false)]
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Informe o nome da pessoa")]
         public string Nome { get; set; }

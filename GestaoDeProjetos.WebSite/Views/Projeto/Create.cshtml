@@ -4,9 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Criar Projeto</h1>
 
-<h4>ProjetoViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,6 +27,11 @@
                 <span asp-validation-for="Prioridade" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="DataInicio" class="control-label"></label>
+                <input asp-for="DataInicio" class="form-control" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DataPrevista" class="control-label"></label>
                 <input asp-for="DataPrevista" class="form-control" />
                 <span asp-validation-for="DataPrevista" class="text-danger"></span>
@@ -44,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="EquipeId" class="control-label"></label>
-                <select asp-for="EquipeId" asp-items="@ViewBag.Equipe" class="form-control"></select>
+                <select asp-for="EquipeId" asp-items="@ViewBag.Equipes" class="form-control"></select>
                 <span asp-validation-for="EquipeId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -55,7 +59,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {

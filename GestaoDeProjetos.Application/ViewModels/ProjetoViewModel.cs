@@ -8,13 +8,14 @@ namespace GestaoDeProjetos.Application.ViewModels
     {
         public ProjetoViewModel()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             Progresso = 0;
             Tarefas = new List<TarefaViewModel>();            
         }
 
+        [Key]
         [ScaffoldColumn(false)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Informe o nome do projeto")]
         public string Nome { get; set; }
@@ -26,8 +27,16 @@ namespace GestaoDeProjetos.Application.ViewModels
         [Required(ErrorMessage = "Informe a prioridade do projeto")]
         public string Prioridade { get; set; }
 
+        [Required(ErrorMessage = "Informe a data de início do projeto")]
+        [DataType(DataType.Date)]
+        public DateTime DataInicio { get; set; }
+
         [Required(ErrorMessage = "Informe a data prevista do projeto")]
+        [DataType(DataType.Date)]
         public DateTime DataPrevista { get; set; }
+
+        [Display(Name = "Status do Projeto")]
+        public string Status { get; set; }
 
         [Display(Name = "Relatório")]
         public string Relatorio { get; set; }
@@ -36,11 +45,11 @@ namespace GestaoDeProjetos.Application.ViewModels
         public int Progresso { get; set; }
 
         [ScaffoldColumn(false)]
-        public Guid CoordenadorId { get; set; }
+        public string CoordenadorId { get; set; }
         public virtual PessoaViewModel Coordenador { get; set; }
 
         [ScaffoldColumn(false)]
-        public Guid EquipeId { get; set; }
+        public string EquipeId { get; set; }
         public virtual EquipeViewModel Equipe { get; set; }
 
         public virtual ICollection<TarefaViewModel> Tarefas { get; set; }

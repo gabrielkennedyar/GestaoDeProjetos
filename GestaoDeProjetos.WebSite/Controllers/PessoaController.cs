@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GestaoDeProjetos.Application.ViewModels;
 using GestaoDeProjetos.Application.IAppServices;
+using GestaoDeProjetos.Application.ViewModels.NotMapped;
 
 namespace GestaoDeProjetos.WebSite.Controllers
 {
@@ -25,20 +26,30 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Pessoa/Details/5
-        public IActionResult Details(Guid? id)
+        public IActionResult Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var pessoa = _pessoaAppService.ObterPorId(id.Value);
+            var pessoa = _pessoaAppService.ObterPorId(id);
             if (pessoa == null)
             {
                 return NotFound();
             }
 
-            return View(pessoa);
+            var detalhepessoas = new DetalhesPessoaViewModel
+            {
+                Id = pessoa.Id,
+                Funcao = pessoa.Funcao,
+                Nome = pessoa.Nome,
+                DataCadastro = pessoa.DataCadastro,
+                Projetos = pessoa.ProjetosCoordenados,
+                PessoasEquipe = pessoa.PessoasEquipes
+            };
+
+            return View(detalhepessoas);
         }
 
         // GET: Pessoa/Create
@@ -63,14 +74,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Pessoa/Edit/5
-        public IActionResult Edit(Guid? id)
+        public IActionResult Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var pessoa = _pessoaAppService.ObterPorId(id.Value);
+            var pessoa = _pessoaAppService.ObterPorId(id);
             if (pessoa == null)
             {
                 return NotFound();
@@ -83,7 +94,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Guid id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] PessoaViewModel pessoa)
+        public IActionResult Edit(string id, [Bind("Nome,Funcao,Setor,Contato,Empresa,Id")] PessoaViewModel pessoa)
         {
             if (id != pessoa.Id)
             {
@@ -100,14 +111,14 @@ namespace GestaoDeProjetos.WebSite.Controllers
         }
 
         // GET: Pessoa/Delete/5
-        public IActionResult Delete(Guid? id)
+        public IActionResult Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var pessoa = _pessoaAppService.ObterPorId(id.Value);
+            var pessoa = _pessoaAppService.ObterPorId(id);
                 
             if (pessoa == null)
             {
@@ -120,7 +131,7 @@ namespace GestaoDeProjetos.WebSite.Controllers
         // POST: Pessoa/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(Guid id)
+        public IActionResult DeleteConfirmed(string id)
         {
             _pessoaAppService.Deletar(id);
 

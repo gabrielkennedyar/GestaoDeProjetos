@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GestaoDeProjetos.Infra.Data.Migrations
 {
-    public partial class PrimeiraVersao : Migration
+    public partial class GuidToString : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,10 +11,11 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                 name: "Pessoa",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<string>(fixedLength: true, maxLength: 36, nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataModificacao = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
+                    Funcao = table.Column<string>(maxLength: 1000, nullable: false),
                     Setor = table.Column<string>(maxLength: 100, nullable: false),
                     Contato = table.Column<string>(maxLength: 50, nullable: false),
                     Empresa = table.Column<string>(maxLength: 200, nullable: false)
@@ -28,12 +29,12 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                 name: "Equipe",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<string>(fixedLength: true, maxLength: 36, nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataModificacao = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: false),
-                    CoordenadorId = table.Column<byte[]>(nullable: false)
+                    CoordenadorId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,12 +51,12 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                 name: "PessoaEquipe",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<string>(fixedLength: true, maxLength: 36, nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataModificacao = table.Column<DateTime>(nullable: false),
                     DataAlocacao = table.Column<DateTime>(nullable: false),
-                    PessoaId = table.Column<byte[]>(nullable: false),
-                    EquipeId = table.Column<byte[]>(nullable: false)
+                    PessoaId = table.Column<string>(nullable: false),
+                    EquipeId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +79,7 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                 name: "Projeto",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<string>(fixedLength: true, maxLength: 36, nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataModificacao = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
@@ -87,8 +88,8 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                     DataPrevista = table.Column<DateTime>(nullable: false),
                     Relatorio = table.Column<string>(maxLength: 10000, nullable: false),
                     Progresso = table.Column<int>(nullable: false),
-                    CoordenadorId = table.Column<byte[]>(nullable: false),
-                    EquipeId = table.Column<byte[]>(nullable: false)
+                    CoordenadorId = table.Column<string>(nullable: false),
+                    EquipeId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,14 +112,14 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                 name: "Tarefa",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<string>(fixedLength: true, maxLength: 36, nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataModificacao = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
                     DataInicio = table.Column<DateTime>(nullable: false),
                     DataPrevista = table.Column<DateTime>(nullable: false),
-                    ResponsavelId = table.Column<byte[]>(nullable: false),
-                    ProjetoId = table.Column<byte[]>(nullable: true)
+                    ResponsavelId = table.Column<string>(nullable: false),
+                    ProjetoId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
