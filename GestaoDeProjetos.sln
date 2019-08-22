@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{4D5C6A5B-5833-4194-A6F7-9C16EA2E06CC}"
 EndProject
@@ -27,7 +27,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoDeProjetos.Infra.Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoDeProjetos.Infra.CrossCutting.IoC", "GestaoDeProjetos.Infra.CrossCutting.IoC\GestaoDeProjetos.Infra.CrossCutting.IoC.csproj", "{6554CACD-D105-4CAC-B7FA-D7BE7785F499}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoDeProjetos.Infra.CrossCutting.Identity", "GestaoDeProjetos.Infra.CrossCutting.Identity\GestaoDeProjetos.Infra.CrossCutting.Identity.csproj", "{4DC7783F-D301-4012-983E-793ACDA3D97D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoDeProjetos.Infra.CrossCutting.Identity", "GestaoDeProjetos.Infra.CrossCutting.Identity\GestaoDeProjetos.Infra.CrossCutting.Identity.csproj", "{4DC7783F-D301-4012-983E-793ACDA3D97D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5793C7AA-CBBB-4C9B-8BA4-DC8C0FABDB6C}"
+	ProjectSection(SolutionItems) = preProject
+		ComandosDotNet.txt = ComandosDotNet.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
