@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using GestaoDeProjetos.Application.AutoMapper;
 using GestaoDeProjetos.Infra.CrossCutting.IoC;
+using GestaoDeProjetos.Infra.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,6 +28,11 @@ namespace GestaoDeProjetos.WebSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configuração para gerar o migrations
+            services.AddDbContext<GestaoDeProjetosContext>(options => options.UseMySQL(
+                                                                             Configuration.GetConnectionString("DefaultConnection"),
+                                                                             b => b.MigrationsAssembly("GestaoDeProjetos.WebSite")));
+
             // Registra o contexto do banco
             BootStrapper.RegisterDbContext(Configuration, services);
             BootStrapper.Register(services);
