@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace GestaoDeProjetos.Infra.Data.Migrations
+namespace GestaoDeProjetos.WebSite.Migrations
 {
     [DbContext(typeof(GestaoDeProjetosContext))]
-    [Migration("20190817161333_GuidToString")]
-    partial class GuidToString
+    [Migration("20190824152232_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,6 +131,9 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
 
                     b.Property<DateTime>("DataCadastro");
 
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnName("DataInicio");
+
                     b.Property<DateTime>("DataModificacao");
 
                     b.Property<DateTime>("DataPrevista")
@@ -161,6 +164,11 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnName("Relatorio")
                         .HasMaxLength(10000);
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnName("Status")
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 

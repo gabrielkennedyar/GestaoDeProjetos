@@ -3,16 +3,14 @@ using System;
 using GestaoDeProjetos.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace GestaoDeProjetos.Infra.Data.Migrations
+namespace GestaoDeProjetos.WebSite.Migrations
 {
     [DbContext(typeof(GestaoDeProjetosContext))]
-    [Migration("20190818005346_DataInicioProj")]
-    partial class DataInicioProj
+    partial class GestaoDeProjetosContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace GestaoDeProjetos.Infra.Data.Migrations
+namespace GestaoDeProjetos.WebSite.Migrations
 {
-    public partial class GuidToString : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,9 +85,11 @@ namespace GestaoDeProjetos.Infra.Data.Migrations
                     Nome = table.Column<string>(maxLength: 200, nullable: false),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: false),
                     Prioridade = table.Column<string>(maxLength: 100, nullable: false),
+                    DataInicio = table.Column<DateTime>(nullable: false),
                     DataPrevista = table.Column<DateTime>(nullable: false),
                     Relatorio = table.Column<string>(maxLength: 10000, nullable: false),
                     Progresso = table.Column<int>(nullable: false),
+                    Status = table.Column<string>(maxLength: 100, nullable: false),
                     CoordenadorId = table.Column<string>(nullable: false),
                     EquipeId = table.Column<string>(nullable: false)
                 },
