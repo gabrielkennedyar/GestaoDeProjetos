@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using GestaoDeProjetos.Application.ViewModels;
 using GestaoDeProjetos.Application.IAppServices;
 using GestaoDeProjetos.Application.ViewModels.NotMapped;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoDeProjetos.WebSite.Controllers
 {
+    [Authorize]
     public class PessoaController : Controller
     {
         private readonly IPessoaAppService _pessoaAppService;

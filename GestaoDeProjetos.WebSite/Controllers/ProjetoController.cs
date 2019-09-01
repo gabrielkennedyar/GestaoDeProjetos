@@ -1,6 +1,7 @@
 ﻿using GestaoDeProjetos.Application.IAppServices;
 using GestaoDeProjetos.Application.ViewModels;
 using GestaoDeProjetos.Application.ViewModels.NotMapped;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 
 namespace GestaoDeProjetos.WebSite.Controllers
 {
+    [Authorize]
     public class ProjetoController : Controller
     {
         private readonly IProjetoAppService _projetoAppService;

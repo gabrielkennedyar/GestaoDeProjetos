@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using GestaoDeProjetos.Application.IAppServices;
 using GestaoDeProjetos.Application.ViewModels;
 using GestaoDeProjetos.Application.ViewModels.NotMapped;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GestaoDeProjetos.WebSite.Controllers
 {
+    [Authorize]
     public class EquipeController : Controller
     {
         private readonly IEquipeAppService _equipeAppService;
