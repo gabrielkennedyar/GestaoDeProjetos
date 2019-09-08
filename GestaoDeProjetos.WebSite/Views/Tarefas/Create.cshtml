@@ -1,0 +1,53 @@
+﻿@model GestaoDeProjetos.Application.ViewModels.TarefaViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Criar Tarefa</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResponsavelId" class="control-label"></label>
+                <select asp-for="ResponsavelId" asp-items="@ViewBag.Responsavel" class="form-control"></select>
+                <span asp-validation-for="ResponsavelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjetoId" class="control-label"></label>
+                <select asp-for="ProjetoId" asp-items="@ViewBag.Projetos" class="form-control"></select>
+                <span asp-validation-for="ProjetoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInicio" class="control-label"></label>
+                <input asp-for="DataInicio" class="form-control" />
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataPrevista" class="control-label"></label>
+                <input asp-for="DataPrevista" class="form-control" />
+                <span asp-validation-for="DataPrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

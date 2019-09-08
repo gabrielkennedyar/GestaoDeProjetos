@@ -10,5 +10,15 @@ namespace GestaoDeProjetos.Domain.Entities
 
         public string ResponsavelId { get; set; }
         public virtual Pessoa Responsavel { get; set; }
+
+        public string ProjetoId { get; set; }
+        public virtual Projeto Projeto { get; set; }
+
+        public void AtualizarDados(Tarefa tarefa)
+        {
+            Nome = tarefa.Nome;
+            DataInicio = tarefa.DataInicio;
+            DataPrevista = tarefa.DataPrevista;
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace GestaoDeProjetos.Infra.Data.EntityConfig
             builder.Property(t => t.DataPrevista).IsRequired().HasColumnName("DataPrevista");
 
             builder.HasOne(t => t.Responsavel).WithMany(p => p.Tarefas).IsRequired().HasForeignKey(t => t.ResponsavelId);
+            builder.HasOne(t => t.Projeto).WithMany(p => p.Tarefas).IsRequired().HasForeignKey(t => t.ProjetoId);
         }
     }
 }
