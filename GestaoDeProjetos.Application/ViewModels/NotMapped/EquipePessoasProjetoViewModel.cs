@@ -14,6 +14,7 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Display(Name = "Nome da Equipe")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Informe um coordenador")]
         [Display(Name = "Coordenador")]
         public string CoordenadorId { get; set; }
 
@@ -21,6 +22,7 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
+        [Required(ErrorMessage = "Informe pelo menos um integrante")]
         [Display(Name = "Integrantes")]
         public string[] IntegrantesId { get; set; }
 

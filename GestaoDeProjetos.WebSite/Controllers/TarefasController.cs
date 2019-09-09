@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using GestaoDeProjetos.Application.IAppServices;
 using GestaoDeProjetos.Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GestaoDeProjetos.WebSite.Controllers
 {
+    [Authorize]
     public class TarefasController : Controller
     {
         private readonly IProjetoAppService _projetoAppService;

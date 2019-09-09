@@ -1,16 +1,16 @@
 ﻿@model GestaoDeProjetos.Application.ViewModels.NotMapped.ProjetoPessoaEquipeViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Criar Projeto";
 }
 
-<h1>Criar Projeto</h1>
+<h1>@ViewData["Title"]</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NomeProjeto" class="control-label"></label>
                 <input asp-for="NomeProjeto" class="form-control" />
@@ -51,9 +51,18 @@
                 <select asp-for="EquipeId" asp-items="@ViewBag.Equipes" class="form-control"></select>
                 <span asp-validation-for="EquipeId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            @if (ViewBag.Coordenador.Count == 0 || ViewBag.Equipes.Count == 0)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" disabled />
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            }
         </form>
     </div>
 </div>
