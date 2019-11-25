@@ -37,9 +37,11 @@ namespace GestaoDeProjetos.Application.ViewModels.NotMapped
         [Range(0, 100)]
         public int Progresso { get; set; }
 
+        [Required(ErrorMessage = "Informe um coordenador")]
         [Display(Name = "Coordenador")]
         public string CoordenadorId { get; set; }
 
+        [Required(ErrorMessage = "Informe a equipe do projeto")]
         [Display(Name = "Equipe")]
         public string EquipeId { get; set; }
     }

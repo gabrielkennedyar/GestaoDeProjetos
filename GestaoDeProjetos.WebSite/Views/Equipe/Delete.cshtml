@@ -1,9 +1,7 @@
 ﻿@model GestaoDeProjetos.Application.ViewModels.EquipeViewModel
 @{
-    ViewData["Title"] = "Apagar";
+    ViewData["Title"] = "Apagar Equipe";
 }
-
-<h1>Apagar</h1>
 
 <h1>@ViewData["Title"]</h1>
 
@@ -41,6 +39,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Apagar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar para lista</a>
+        <a asp-action="Index">Voltar</a>
     </form>
 </div>
