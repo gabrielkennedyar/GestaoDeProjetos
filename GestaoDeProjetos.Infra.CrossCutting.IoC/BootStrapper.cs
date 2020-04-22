@@ -9,8 +9,6 @@ using GestaoDeProjetos.Infra.CrossCutting.Identity.Context;
 using GestaoDeProjetos.Infra.Data.Context;
 using GestaoDeProjetos.Infra.Data.Repositories;
 using GestaoDeProjetos.Infra.Data.UoW;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +28,7 @@ namespace GestaoDeProjetos.Infra.CrossCutting.IoC
         public static void RegisterIdentity(IConfiguration configuration, IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddDefaultUI(UIFramework.Bootstrap4).AddEntityFrameworkStores<ApplicationDbContext>();
+            
         }
         public static void Register(IServiceCollection services)
         {

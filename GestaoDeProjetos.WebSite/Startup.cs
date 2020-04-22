@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GestaoDeProjetos.Application.AutoMapper;
+using GestaoDeProjetos.Infra.CrossCutting.Identity.Context;
 using GestaoDeProjetos.Infra.CrossCutting.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +41,7 @@ namespace GestaoDeProjetos.WebSite
             });
 
             BootStrapper.RegisterIdentity(Configuration, services);
+            services.AddDefaultIdentity<IdentityUser>().AddDefaultUI(UIFramework.Bootstrap4).AddEntityFrameworkStores<ApplicationDbContext>();
 
             // Configura o mapeamento model viewModel
             var mapper = AutoMapperConfig.RegisterMappings();
